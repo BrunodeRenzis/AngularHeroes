@@ -35,9 +35,9 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar Héroe" (keyup.enter)="buscarHeroe(buscarTexto.value)" #buscarTexto>
-                <button (click)="buscarHeroe(buscarTexto.value)" class="btn btn-outline-success" type="button">Buscar</button>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar Héroe" #buscarTexto (keyup.enter)="buscarHeroe(buscarTexto.value)">
+                <button class="btn btn-outline-success" type="button" (click)="buscarHeroe(buscarTexto.value)">Buscar</button>
             </form>
         </div>
     </div>

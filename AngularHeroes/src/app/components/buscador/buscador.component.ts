@@ -14,7 +14,7 @@ export class BuscadorComponent implements OnInit {
             
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.activatedRoute.params.subscribe(params=>{
       console.log(params['termino']);
       
