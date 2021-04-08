@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 
 //RUTAS
 import {APP_ROUTING} from './app.routes';
@@ -26,12 +26,14 @@ import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.
     HeroesComponent,
     HeroeComponent,
     BuscadorComponent,
-    HeroeTarjetaComponent
+    HeroeTarjetaComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    APP_ROUTING
+    APP_ROUTING,
+    HttpClientModule
   ],
   providers: [
     HeroesService
