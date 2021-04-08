@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HeroesService} from '../../servicios/heroes.service';
-import {HttpService} from '../../servicios/http.service'
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -9,9 +8,9 @@ import {HttpService} from '../../servicios/http.service'
 })
 export class BuscadorComponent implements OnInit {
   
-  heroes:any;
+  heroes:any[]=[];
   termino:string="";
-  constructor(private activatedRoute:ActivatedRoute, private _heroesService:HeroesService, private _httpService:HttpService) { 
+  constructor(private activatedRoute:ActivatedRoute, private _heroesService:HeroesService) { 
             
   }
 
@@ -20,7 +19,7 @@ export class BuscadorComponent implements OnInit {
       console.log(params['termino']);
       
       this.termino=params['termino'];
-      this._httpService.get('http://localhost:8080/heroes/buscar/'+this.termino).subscribe(data => this.heroes=data); //httpservice con get crear un get en httpservice
+      this.heroes=this._heroesService.buscarHeroes(params['termino']);
       console.log(this.heroes);
     });
   }

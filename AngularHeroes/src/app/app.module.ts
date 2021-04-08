@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HeroeComponent } from './components/heroe/heroe.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.component';
+import { HeroesPagesComponent } from './pages/heroes-pages/heroes-pages.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.
     HeroeComponent,
     BuscadorComponent,
     HeroeTarjetaComponent,
+    HeroesPagesComponent,
     
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
-    APP_ROUTING,
-    HttpClientModule
+    APP_ROUTING
   ],
   providers: [
     HeroesService
