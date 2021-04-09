@@ -29,8 +29,7 @@ export class HeroesService{
     }
 
     /*agregarHeroe(heroe:Heroe):Heroe{
-      
-      return this.http.post('http://localhost:8080/heroes/guardar');
+     return this.http.post('http://localhost:8080/heroes/guardar');
     }*/
 
 }
