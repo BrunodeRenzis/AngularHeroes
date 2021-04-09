@@ -15,11 +15,18 @@ export class BuscadorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._heroesService.getHeroes().subscribe( (data:any) => {this.heroes=data
+        this.buscarFalopa();
+    });
+    
+  }
+  
+  buscarFalopa(){
     this.activatedRoute.params.subscribe(params=>{
       console.log(params['termino']);
       
       this.termino=params['termino'];
-      this.heroes=this._heroesService.buscarHeroes(params['termino']);
+      this.heroes=this._heroesService.buscarHeroes(params['termino'],this.heroes);
       console.log(this.heroes);
     });
   }

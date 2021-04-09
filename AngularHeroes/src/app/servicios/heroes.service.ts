@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HeroesService{
     private heroes:Heroe[]=[
-        {
+        /*{
           nombre: "Aquaman",
           bio: "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.",
           img: "assets/img/aquaman.png",
@@ -51,23 +53,24 @@ export class HeroesService{
           img: "assets/img/wolverine.png",
           aparicion: "1974-11-01",
           casa: "Marvel"
-        }
+        }*/
       ];
-    constructor(){
+    constructor(private http:HttpClient){
         
     }
 
-    getHeroes():Heroe[]{
-        return this.heroes;
+    getHeroes():Observable<Heroe[]>{
+        //return this.heroes;
+        return this.http.get<Heroe[]>('http://localhost:8080/heroes');
     }
     
     getHeroe( idx: string ){
       return this.heroes[idx];
     }
 
-    buscarHeroes(termino:string):Heroe[]{
-        let heroesArr:Heroe[]=[];
+    buscarHeroes(termino:string,heroes:Heroe[]):Heroe[]{
         termino = termino.toLowerCase();
+        /*let heroesArr:Heroe[]=[];
 
         for(let i=0;i<this.heroes.length;i++){
           let heroe = this.heroes[i];
@@ -77,7 +80,12 @@ export class HeroesService{
               heroesArr.push(heroe);
           }
         }
-        return heroesArr;
+        return heroesArr;*/
+        return heroes.filter((heroe)=>{
+          let nombre = heroe.nombre.toLowerCase();
+          return(nombre.indexOf(termino)>=0);
+          //return !!heroe.nombre.toLowerCase().search(termino);
+        })
     }
 }
 

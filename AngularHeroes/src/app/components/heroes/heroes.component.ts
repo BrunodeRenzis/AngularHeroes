@@ -24,7 +24,7 @@ export class HeroesComponent implements OnInit {
   }
 
   cargarHeroes(){
-    this._httpService.get('http://localhost:8080/heroes').subscribe( (data:any) => this.heroes=data);
+    this._heroesService.getHeroes().subscribe( (data:any) => {this.heroes=data},(error:any)=>console.log("Error Heroes: ",error));
   }
 
   
