@@ -16,12 +16,12 @@ export class BuscadorComponent implements OnInit {
 
   ngOnInit() {
     this._heroesService.getHeroes().subscribe( (data:any) => {this.heroes=data
-        this.buscarFalopa();
+        this.buscar();
     });
     
   }
   
-  buscarFalopa(){
+  buscar(){
     this.activatedRoute.params.subscribe(params=>{
       console.log(params['termino']);
       
